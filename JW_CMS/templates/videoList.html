@@ -1,0 +1,23 @@
+<div id="videoList">
+    <table>
+        <tr id='listHeaders'>
+            <th><input type="checkbox" name="selectAll"></th>
+            <th>THUMBNAIL</th>
+            <th class="sortHeader">TITLE</th>
+            <th>KEY</th>
+            <th class="sortHeader">DURATION</th>
+            <th class="sortHeader">PUBLISH DATE</th>
+        </tr>
+
+        {% for video in videos %}
+        <tr>
+            <td><input type="checkbox" name="select" id="{{ video.key }}"></td>
+            <td><img src="{{ video.thumbnails.720 }}" width = 70 /></td>
+            <td class="title"><a href="http://localhost:8000/jw/details/{{ video.key }}"> {{ video.title }} </a></td>
+            <td>{{ video.key }}</td>
+            <td>{{ video.duration }}</td>
+            <td>{{ video.date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
