@@ -7,11 +7,18 @@
                 <input class='material-icons' id='searchSubmit' type='submit' name='searchSubmit'  value='search'>
         </form>
     </div>
+
+    <div id=uploadArea>
+        <form id="uploadForm" method="POST" action="" enctype="multipart/form-data" target = submission.frame onsubmit="uploadSuccess();">
+        {% csrf_token %}
+            <fieldset>
+                <input type="file" name="file" onchange='getUploadURL();' />
+                <button type="submit">Upload</button>
+            </fieldset>
+            <iframe name="submission.frame" hidden></iframe>
+        </form>
+        </div>
 </header>
-
-
-
-
 
 
 

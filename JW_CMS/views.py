@@ -27,3 +27,8 @@ def videoList(request, column=None, order=None, searchTerm=None):
     context = {'videos':sorted_videos}
 
     return render(request, 'videoList.html', context)
+
+
+def uploadRequest(request):
+    URL = jwAccount.get_upload_URL('video')
+    return HttpResponse(URL)
