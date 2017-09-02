@@ -12,10 +12,13 @@ secret = settings.JWSECRET
 
 jwAccount = Account(key, secret)
 
-def videoList(request, column = None, order = None):
+def videoList(request, column=None, order=None, searchTerm=None):
 
     if not column and not order:
-        jwAccount.video_list = jwAccount.get_video_list()
+        if searchTerm:
+            jwAccount.video_list = jwAccount.get_video_list(search=searchTerm)
+        else:
+            jwAccount.video_list = jwAccount.get_video_list()
         column = 'title'
         order = 'asc'
 

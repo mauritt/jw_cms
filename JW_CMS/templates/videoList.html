@@ -1,5 +1,19 @@
 {% extends 'base.html' %}
 {% block body%}
+<header>
+    <div id='searchArea'>
+        <form name='searchForm' onsubmit='applySearch(); return false;' action='' method=''>
+                <input type='text' name='searchField' id='searchField' value='SEARCH' onFocusIn="searchFocusChange(this);" onFocusOut="searchFocusChange(this);" style='color:grey;'>
+                <input class='material-icons' id='searchSubmit' type='submit' name='searchSubmit'  value='search'>
+        </form>
+    </div>
+</header>
+
+
+
+
+
+
 
 <div id="videoList">
     <table>
