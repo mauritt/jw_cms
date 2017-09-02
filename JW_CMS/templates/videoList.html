@@ -6,10 +6,22 @@
         <tr id='listHeaders'>
             <th><input type="checkbox" name="selectAll"></th>
             <th>THUMBNAIL</th>
-            <th class="sortHeader">TITLE<i class="material-icons">arrow_drop_up</i></th>
+            <th class="sortHeader">
+                <a id="title" href="" onclick="changeSortOrder(this); return false;" >
+                TITLE
+                <i class="material-icons" style="opacity: 100;">arrow_drop_up</i></a>
+            </th>
             <th>KEY</th>
-            <th class="sortHeader">DURATION<i class="material-icons">arrow_drop_up</i></th>
-            <th class="sortHeader">PUBLISH DATE<i class="material-icons">arrow_drop_up</i></th>
+            <th class="sortHeader">
+                <a id="duration" href="" onclick="changeSortOrder(this); return false;" >
+                    DURATION
+                <i class="material-icons" style="opacity: 0;">arrow_drop_up</i></a>
+            </th>
+            <th class="sortHeader">
+                <a id ="date" href="" onclick="changeSortOrder(this); return false;" >
+                    PUBLISH DATE
+                <i class="material-icons" style="opacity: 0;">arrow_drop_up</i></a>
+            </th>
         </tr>
 
         {% for video in videos %}

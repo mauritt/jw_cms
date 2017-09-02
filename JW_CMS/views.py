@@ -12,10 +12,14 @@ secret = settings.JWSECRET
 
 jwAccount = Account(key, secret)
 
-def videoList(request):
-    jwAccount.video_list = jwAccount.get_video_list()
+def videoList(request, column = None, order = None):
 
-    sorted_videos = jwAccount.video_list.sort()
+    if not column and not order:
+        jwAccount.video_list = jwAccount.get_video_list()
+        column = 'title'
+        order = 'asc'
+
+    sorted_videos = jwAccount.video_list.sort(column,order)
 
     context = {'videos':sorted_videos}
 
