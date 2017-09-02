@@ -41,4 +41,18 @@ function applyNewSort(sortColumn, sortOrder){
 
         icon.style.opacity='100';
     });
+};
+
+function selectAll(obj){
+    checkBoxes = document.getElementsByName('select');
+    if(obj.checked == true){
+        for(var i=0; i<checkBoxes.length; i++){
+            checkBoxes[i].checked = true;
+        }
+    }else{
+        for(var i=0; i<checkBoxes.length; i++){
+            checkBoxes[i].checked = false;
+        }
+
+    }
 }
