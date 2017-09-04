@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, QueryDict
 from jwCaller import Account
 from django.conf import settings
 import os
@@ -28,7 +28,29 @@ def videoList(request, column=None, order=None, searchTerm=None):
 
     return render(request, 'videoList.html', context)
 
+def videoDetails(request, videoKey):
+    context = {}
+    video = jwAccount.get_video(videoKey)
+    context['video'] = video
+    embed = 'http://content.jwplatform.com/players/{}-pu8YCHH3.js'
+    embed = embed.format(video.key)
+    context['embed'] = embed
+
+    return render(request, 'videoDetails.html', context)
+
 
 def uploadRequest(request):
     URL = jwAccount.get_upload_URL('video')
     return HttpResponse(URL)
+
+def updateDetails(request, videoKey):
+    if request.method == 'POST':
+        q = QueryDict(request.body).copy()
+        q.pop('csrfmiddlewaretoken')
+        params={}
+        for x in q.keys():
+            params[x] = q[x]
+
+        jwAccount.videos.update(video_key=videoKey, **params)
+
+        return HttpResponse('success')

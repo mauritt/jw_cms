@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block body %}
+<form
+    id = 'detailsForm'
+    name='{{ video.key }}'
+    method="POST"
+    action=""
+    target = submission.frame
+    >
+{% csrf_token %}
+
+    <input
+            id="{{ video.title }}"
+            class= "editable"
+            type="text"
+            name="title"
+            value = "{{ video.title }}"
+            onfocusout="activateSave()"
+            >
+
+    <button
+            type="submit"
+            id="saveDetails"
+
+            >Save</button>
+    <iframe name="submission.frame" hidden></iframe>
+</form>
+
+<textarea
+            name="description"
+            id = '{{ video.description }}'
+            class= editable
+            form="detailsForm"
+            rows="10"
+            cols="50"
+            onfocusout="activateSave()"
+            >{{ video.description }}</textarea>
+
+
+<div id="videoEmbed">
+    <script src="{{ embed }}"></script>
+</div>
+
+<div id="videoSummary">
+<ul>
+    <li>Status: {{ video.status }}</li>
+    <li>Type: {{ video.media_type }}</li>
+    <li>Duration: {{ video.duration }}</li>
+    <li>Media ID: {{ video.key }}</li>
+</ul>
+
+</div>
+{% endblock %}
