@@ -60,8 +60,8 @@
             <td><img src="{{ video.thumbnails.720 }}" width = 70 /></td>
             <td class="title"><a href="./details/{{ video.key }}"> {{ video.title }} </a></td>
             <td>{{ video.key }}</td>
-            <td>{{ video.duration }}</td>
-            <td>{{ video.date }}</td>
+            <td>{{ video.duration_as_time }}</td>
+            <td>{{ video.date_as_datetime }}</td>
         </tr>
         {% endfor %}
     </table>
