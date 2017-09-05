@@ -2,20 +2,22 @@ function applySearch(){
     var URL;
     var searchTerm = document.forms['searchForm']['searchField'].value;
     var searchSubmit = document.getElementById('searchSubmit');
+    var searchLabel = document.getElementById('searchLabel');
     var searchField = document.getElementById('searchField');
     var videoList = document.getElementById('videoList');
 
-    URL = 'search/' +searchTerm + ' #videoList';
 
     if (searchSubmit.value == 'search'){
-        URL = 'search/' + searchTerm + " #videoList";
+        URL = 'search/' + searchTerm + " #videoTable";
         $(videoList).load(URL, function(){
             searchSubmit.value = 'clear';
+            searchLabel.innerHTML = 'clear'
         });
     }else{
-        URL = '.' + ' #videoList';
+        URL = '.' + ' #videoTable';
         $(videoList).load(URL, function(){
             searchSubmit.value = 'search';
+            searchLabel.innerHTML = 'search'
             document.forms['searchForm']['searchField'].value = 'SEARCH';
             searchField.style.color = 'grey';
         });
