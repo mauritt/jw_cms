@@ -1,3 +1,84 @@
+body{
+    background-color: #FFFFFF;
+}
+
+a{
+    color: blue;
+}
+
+header{
+    position: relative;
+    width: 80%;
+    left:10%;
+    font-size: 2em;
+}
+
+#videoList{
+    font-size: 30px;
+    position: relative;
+    width: 80%;
+    left:10%;
+}
+
+
+#videoList a{
+    text-decoration: none
+
+}
+
+#videoList table{
+    width:100%;
+    font-size: .6em;
+    font-family: sans-serif;
+    border-collapse: collapse;
+
+
+}
+
+
+#videoList th{
+    font-size: 1.1em;
+}
+
+#videoList i{
+    vertical-align: -20%;
+    font-size: 1.5em;
+}
+
+th, td{
+    border-color: #000000;
+    border-width: 2px;
+    border-bottom-style: solid;
+    text-align: left;
+    padding-bottom: .5%;
+    padding-top: .5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #saveDetails{
     background-color: #ffffff;
     color: #999999;
