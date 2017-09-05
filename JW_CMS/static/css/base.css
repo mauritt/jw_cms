@@ -1,5 +1,6 @@
 body{
     background-color: #FFFFFF;
+    font-family: sans-serif;
 }
 
 a{
@@ -57,12 +58,59 @@ th, td{
 
 
 
+fieldset{
+    border-style: none;
 
 
 
+}
+
+
+.uploadInput{
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+#uploadArea{
+    font-size: 30px;
+    margin-bottom: 2.5%;
+
+}
+
+#uploadArea h2{
+    font-size: .8em;
+    display: inline;
+
+}
 
 
 
+#uploadArea .active{
+    background-color: red;
+    color:white;
+    font-size: .75em;
+    border-style: none;
+    padding: 1%;
+    margin: .5%;
+    cursor: pointer;
+
+}
+
+
+
+#uploadArea .inactive{
+    background-color: grey;
+    color:black;
+    font-size: .75em;
+    border-style: none;
+    padding: 1%;
+    margin: .5%;
+
+}
 
 
 

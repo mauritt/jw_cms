@@ -3,13 +3,18 @@ function getUploadURL(){
     var request = './video/upload';
     var URL = $.get(request, function(text){
         console.log(text)
-        uploadForm = document.getElementById('uploadForm');
-
+        var uploadForm = document.getElementById('uploadForm');
         uploadForm.action = text;
+
+        var uploadButton = document.getElementById('uploadLabel');
+        uploadButton.className = 'active';
     });
 
 };
 
 function uploadSuccess(){
     alert("Your video was uploaded");
+    var uploadButton = document.getElementById('uploadLabel');
+    uploadButton.className = 'inactive';
+
 }
