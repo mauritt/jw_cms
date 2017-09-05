@@ -15,7 +15,7 @@ function getSortOrder(){
 };
 
 function applyNewSort(sortColumn, sortOrder){
-    var url = sortColumn + "_" + sortOrder + " #videoList";
+    var url = sortColumn + "_" + sortOrder + " #videoTable";
     var videoList = document.getElementById('videoList');
 
     $(videoList).load(url, function(){
