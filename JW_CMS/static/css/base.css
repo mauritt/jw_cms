@@ -1,72 +1,12 @@
-body{
-    background-color: #FFFFFF;
-    font-family: sans-serif;
-}
-
-a{
-    color: blue;
-}
-
 header{
-    position: relative;
-    width: 80%;
-    left:10%;
-    font-size: 2em;
+    padding-bottom: 3%;
+    padding-top: 3%;
 }
 
-#videoList{
-    font-size: 30px;
-    position: relative;
-    width: 80%;
-    left:10%;
-}
-
-
-#videoList a{
-    text-decoration: none
-
-}
-
-#videoList table{
-    width:100%;
-    font-size: .6em;
-    font-family: sans-serif;
-    border-collapse: collapse;
-
-
-}
-
-
-#videoList th{
-    font-size: 1.1em;
-}
 
 #videoList i{
     vertical-align: -20%;
-    font-size: 1.5em;
 }
-
-th, td{
-    border-color: #000000;
-    border-width: 2px;
-    border-bottom-style: solid;
-    text-align: left;
-    padding-bottom: .5%;
-    padding-top: .5%;
-}
-
-
-
-
-
-
-
-
-
-fieldset{
-    border-style: none;
-}
-
 
 .uploadInput{
     width: 0.1px;
@@ -78,98 +18,46 @@ fieldset{
 }
 
 
-#uploadArea{
-    font-size: 30px;
-    margin-bottom: 2.5%;
-}
-
-
-#uploadArea h2{
-    font-size: .8em;
-    display: inline;
-}
-
-
 #uploadArea .active{
     background-color: red;
     color:white;
-    font-size: .75em;
     border-style: none;
     padding: 1%;
-    margin: .5%;
     cursor: pointer;
 }
 
 #uploadArea .inactive{
     background-color: grey;
     color:black;
-    font-size: .75em;
-    border-style: none;
     padding: 1%;
-    margin: .5%;
 }
 
 
 
 
 
-#searchForm{
+
+
+
+/*
+#detailsForm input{
+    font-size: 2em;
+}
+
+#videoEmbed{
+    width: 50%;
+    float: left;
+}
+
+
+#videoSummary{
     border-style: solid;
-    width: 35%;
-    padding-right: 0;
-    padding-left: 1%;
+    width: 45%;
+    float: right;
+    padding: 2%;
+    font-size: 2em;
 
 }
-
-#searchField{
-    font-size: .9em;
-    margin-left: 2%;
-    border-style: none;
-    width: 85%;
-}
-
-#searchField, input:focus{
-    outline: none;
-}
-
-#searchLabel{
-    font-size: 1.2em;
-    padding-right: 0;
-    width: 10%;
-    vertical-align: -15%;
-    cursor: pointer;
-
-}
-
-
-#searchSubmit{
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-}
-
-
-header{
-    margin-bottom: 3%;
-    margin-top: 3%;
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -199,4 +87,4 @@ header{
     background-color: white;
     color: green;
 
-}
+}*/

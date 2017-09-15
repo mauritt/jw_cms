@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block body%}
-<header>
+<header class="container">
+<div class="row">
 
-
-    <div id=uploadArea>
+    <div class="col-md-3"><h2>ADD A VIDEO:</h2></div>
+    <div id="uploadArea" class="col-md-5">
         <form id="uploadForm" method="POST" action="" enctype="multipart/form-data" target = submission.frame onsubmit="uploadSuccess();">
         {% csrf_token %}
             <fieldset>
-                <h2>ADD A VIDEO:</h2>
                 <input id="inputFile" class="uploadInput" type="file" name="file" onchange='getUploadURL();'>
                 <label for="inputFile" class="active">Choose File</label>
                 <input class="uploadInput" id="uploadFile" type="submit">
@@ -19,21 +19,21 @@
 
 
 
-    <div id='searchArea'>
+    <div id='searchArea' class="col-md-4">
         <form id="searchForm" name='searchForm' onsubmit='applySearch(); return false;' action='' method=''>
                 <input type='text' name='searchField' id='searchField' value='SEARCH' onFocusIn="searchFocusChange(this);" onFocusOut="searchFocusChange(this);" style='color:grey;'>
                 <input class="material-icons" id="searchSubmit" type="submit" name="searchSubmit"  value="search" >
-                <label for="searchSubmit" class="material-icons" id="searchLabel">search</label>
+                <!--   <label for="searchSubmit" class="material-icons" id="searchLabel">search</label> -->
         </form>
     </div>
-
+</div>
 </header>
 
 
 
-<div id="videoList">
-    <table id="videoTable">
-        <tr id='listHeaders'>
+<div id="videoList" class="container">
+    <table id="videoTable" class="table">
+        <tr id="listHeaders">
             <th><input type="checkbox" name="selectAll" onchange="selectAll(this);"></th>
             <th>THUMBNAIL</th>
             <th class="sortHeader">
@@ -55,7 +55,7 @@
         </tr>
 
         {% for video in videos %}
-        <tr>
+        <tr >
             <td><input type="checkbox" name="select" id="{{ video.key }}"></td>
             <td><img src="{{ video.thumbnails.720 }}" width = 70 /></td>
             <td class="title"><a href="./details/{{ video.key }}"> {{ video.title }} </a></td>
