@@ -1,20 +1,34 @@
-function getUploadURL(){
+function getUploadURL(obj){
     var response;
     var request = './video/upload';
     var URL = $.get(request, function(text){
-        console.log(text)
         var uploadForm = document.getElementById('uploadForm');
         uploadForm.action = text;
 
-        var uploadButton = document.getElementById('uploadLabel');
-        uploadButton.className = 'active';
+        var label = document.getElementById('uploadLabel');
+        label.innerHTML = "UPLOAD";
+        label.setAttribute("for", "uploadFile");
     });
 
 };
 
 function uploadSuccess(){
     alert("Your video was uploaded");
-    var uploadButton = document.getElementById('uploadLabel');
-    uploadButton.className = 'inactive';
+
 
 }
+
+
+
+
+// <input class="uploadInput" id="uploadFile" type="submit">
+// <label for="uploadFile" class="inactive" id="uploadLabel">Upload</label>
+
+
+
+
+
+
+
+        // var uploadButton = document.getElementById('uploadLabel');
+        // uploadButton.className = 'active';

@@ -2,16 +2,13 @@
 {% block body%}
 <header class="container">
 <div class="row">
-
-    <div class="col-md-3"><h2>ADD A VIDEO:</h2></div>
-    <div id="uploadArea" class="col-md-5">
-        <form id="uploadForm" method="POST" action="" enctype="multipart/form-data" target = submission.frame onsubmit="uploadSuccess();">
+    <div id="uploadArea" class="col-md-3">
+        <form id="uploadForm" method="POST" action="" enctype="multipart/form-data" target="submission.frame" onsubmit="uploadSuccess();">
         {% csrf_token %}
             <fieldset>
-                <input id="inputFile" class="uploadInput" type="file" name="file" onchange='getUploadURL();'>
-                <label for="inputFile" class="active">Choose File</label>
+                <input id="upload" class="uploadInput" type="file" name="file" onchange='getUploadURL(this);'>
+                <label id="uploadLabel" for="upload">Add Video</label>
                 <input class="uploadInput" id="uploadFile" type="submit">
-                <label for="uploadFile" class="inactive" id="uploadLabel">Upload</label>
             </fieldset>
             <iframe name="submission.frame" hidden></iframe>
         </form>
@@ -19,7 +16,7 @@
 
 
 
-    <div id='searchArea' class="col-md-4">
+    <div id='searchArea' class="col-md-6">
         <form id="searchForm" name='searchForm' onsubmit='applySearch(); return false;' action='' method=''>
                 <input type='text' name='searchField' id='searchField' value='SEARCH' onFocusIn="searchFocusChange(this);" onFocusOut="searchFocusChange(this);" style='color:grey;'>
                 <input class="material-icons" id="searchSubmit" type="submit" name="searchSubmit"  value="search" >

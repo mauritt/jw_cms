@@ -18,18 +18,12 @@ header{
 }
 
 
-#uploadArea .active{
+#uploadArea label{
     background-color: red;
     color:white;
     border-style: none;
     padding: 1%;
     cursor: pointer;
-}
-
-#uploadArea .inactive{
-    background-color: grey;
-    color:black;
-    padding: 1%;
 }
 
 
