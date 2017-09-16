@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 {% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-med-12">
+            <h1>Video Detail</h1>
+        </div>
+    </div>
+
 <form
     id = 'detailsForm'
     name='{{ video.key }}'
@@ -7,47 +14,90 @@
     action=""
     target = submission.frame
     >
-{% csrf_token %}
+    {% csrf_token %}
 
-    <input
-            id="{{ video.title }}"
-            class= "editable"
-            type="text"
-            name="title"
-            value = "{{ video.title }}"
-            onfocusout="activateSave()"
-            >
 
-    <button
-            type="submit"
-            id="saveDetails"
+    <div class="row" id="formHeader">
+    <div class="col-md-12">
+        <input
+                id="{{ video.title }}"
+                class= "editable"
+                type="text"
+                name="title"
+                value = "{{ video.title }}"
+                onfocusout="activateSave()"
+                >
+        <button>Embed</button>
+        <div id="saveButtons">
+        <button>Close</button>
+        <button type="submit" id="saveDetails">Save</button>
+        </div>
+    </div>
+    </div>
+        <iframe name="submission.frame" hidden></iframe>
 
-            >Save</button>
-    <iframe name="submission.frame" hidden></iframe>
-</form>
 
-<textarea
+
+    <div class="row">
+        <div id="videoEmbed" class="col-md-6 col-md-offset-1">
+            <script src="{{ embed }}"></script>
+        </div>
+
+        <div id="videoSummary" class="col-md-6">
+            <h2>Video Summary</h2>
+            <div class="container">
+                <div class="row">
+                    <label class="col-md-3">Status:</label>
+                    <p>{{ video.status }}</p>
+                </div>
+                <div class="row">
+                    <label class="col-md-3">Type:</label>
+                    <p>{{ video.media_type }}</p>
+                </div>
+                <div class="row">
+                    <label class="col-md-3">Duration:</label>
+                    <p>{{ video.duration }}</p>
+                </div>
+                <div class="row">
+                    <label class="col-md-3">Media ID:</label>
+                    <p>{{ video.key }}</p>
+                </div>
+            </div>
+        </div>
+            <!-- <ul id="summaryHeadings">
+                <li>Status:</li>
+                <li>Type:</li>
+                <li>Duration:</li>
+                <li>Media ID:</li>
+            </ul>
+            <ul id="summaryDetails">
+                <li>{{ video.status }}</li>
+                <li>{{ video.media_type }}</li>
+                <li>{{ video.duration }}</li>
+                <li>{{ video.key }}</li>
+            </ul> -->
+
+
+    </div>
+
+
+<div class="row">
+    <div class = "col-md-5">
+        <textarea
             name="description"
             id = '{{ video.description }}'
-            class= editable
+            class= "editable"
             form="detailsForm"
-            rows="10"
-            cols="50"
+            rows="5"
+            cols="40"
             onfocusout="activateSave()"
-            >{{ video.description }}</textarea>
+            >{{ video.description }}
+        </textarea>
+    </div>
 
 
-<div id="videoEmbed">
-    <script src="{{ embed }}"></script>
 </div>
 
-<div id="videoSummary">
-<ul>
-    <li>Status: {{ video.status }}</li>
-    <li>Type: {{ video.media_type }}</li>
-    <li>Duration: {{ video.duration }}</li>
-    <li>Media ID: {{ video.key }}</li>
-</ul>
-
+</form>
 </div>
 {% endblock %}

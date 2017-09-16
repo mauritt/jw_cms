@@ -2,12 +2,12 @@
 {% block body%}
 <header class="container">
 <div class="row">
-    <div id="uploadArea" class="col-md-3">
+    <div id="uploadArea" class="col-md-6">
         <form id="uploadForm" method="POST" action="" enctype="multipart/form-data" target="submission.frame" onsubmit="uploadSuccess();">
         {% csrf_token %}
             <fieldset>
                 <input id="upload" class="uploadInput" type="file" name="file" onchange='getUploadURL(this);'>
-                <label id="uploadLabel" for="upload">Add Video</label>
+                <label id="uploadLabel" for="upload">Add A Video</label>
                 <input class="uploadInput" id="uploadFile" type="submit">
             </fieldset>
             <iframe name="submission.frame" hidden></iframe>
@@ -20,7 +20,6 @@
         <form id="searchForm" name='searchForm' onsubmit='applySearch(); return false;' action='' method=''>
                 <input type='text' name='searchField' id='searchField' value='SEARCH' onFocusIn="searchFocusChange(this);" onFocusOut="searchFocusChange(this);" style='color:grey;'>
                 <input class="material-icons" id="searchSubmit" type="submit" name="searchSubmit"  value="search" >
-                <!--   <label for="searchSubmit" class="material-icons" id="searchLabel">search</label> -->
         </form>
     </div>
 </div>
