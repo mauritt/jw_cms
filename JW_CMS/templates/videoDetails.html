@@ -18,21 +18,24 @@
 
 
     <div class="row" id="formHeader">
-    <div class="col-md-12">
-        <input
-                id="{{ video.title }}"
-                class= "editable"
-                type="text"
-                name="title"
-                value = "{{ video.title }}"
-                onfocusout="activateSave()"
-                >
-        <button>Embed</button>
-        <div id="saveButtons">
-        <button>Close</button>
-        <button type="submit" id="saveDetails">Save</button>
+        <div class="col-md-3" id="titleField">
+            <input
+                    id="{{ video.title }}"
+                    class= "editable"
+                    type="text"
+                    name="title"
+                    value = "{{ video.title }}"
+                    onfocusout="activateSave()"
+                    >
+            <i class="material-icons" style="position: absolute; left:95%; margin-right: 0">mode_edit</i>
         </div>
-    </div>
+        <div class="col-md-9">
+            <button>Embed</button>
+            <div id="saveButtons">
+                <button>Close</button>
+                <button type="submit" id="saveDetails">Save</button>
+            </div>
+        </div>
     </div>
         <iframe name="submission.frame" hidden></iframe>
 

@@ -114,21 +114,25 @@ textarea{
 }
 
 
-/*
-#detailsForm input{
-    font-size: 2em;
+#titleField input{
+    width: 100%;
+    position:absolute;
+    z-index: -1;
+    margin-right: 0;
+    padding-left: 10px;
+
 }
 
-#videoEmbed{
-    width: 50%;
-    float: left;
+#titleField i{
+    position: absolute;
+    left:95%;
+    color: #BBBBBB;
+    margin-top:1.5%;
 }
 
 
-
-
-
-
-
+#formHeader{
+    font-size: 1.3em;
+}
 
 
