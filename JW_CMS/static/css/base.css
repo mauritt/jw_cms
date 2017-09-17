@@ -62,14 +62,48 @@ header{
 
 }
 
-#videoSummary ul{
-    list-style-type: none;
-
-}
 
 #videoSummary label{
     margin-right: 1%;
+    font-weight: bold;
 }
+
+#videoSummary p{
+    text-transform: capitalize;
+}
+
+#videoSummary input{
+    color: white;
+    background-color: #222222;
+    border-style: none;
+    padding: 1px 5px;
+    cursor: pointer;
+}
+
+#videoSummary #videoStatus{
+    padding: 1px 5px;
+    color:white;
+    text-transform: uppercase;
+}
+
+#videoStatus.ready{
+    background-color: green;
+}
+
+#videoStatus.failed{
+    background-color: red;
+}
+
+#videoStatus.processing, #videoStatus.updating, #videoStatus.created{
+    background-color: yellow;
+}
+
+
+
+
+
+
+
 
 #saveDetails{
     background-color: #ffffff;
