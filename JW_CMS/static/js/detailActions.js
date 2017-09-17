@@ -26,3 +26,12 @@ function activateSave(){
 
 
 }
+
+function deactivateSave(){
+    console.log('hey')
+    var saveButton = document.getElementById('saveDetails');
+    $(saveButton).removeClass("active");
+
+    var form = document.getElementById('detailsForm');
+    form.action = ""
+}
