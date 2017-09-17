@@ -27,10 +27,10 @@
                     value = "{{ video.title }}"
                     onfocusout="activateSave()"
                     >
-            <i class="material-icons" style="position: absolute; left:95%; margin-right: 0">mode_edit</i>
+            <i class="material-icons">mode_edit</i>
         </div>
         <div class="col-md-9">
-            <button>Embed</button>
+            <button id="embedButton" type="button" onclick="document.getElementById('showEmbed').hidden=false;">Embed</button>
             <div id="saveButtons">
                 <button>Close</button>
                 <button type="submit" id="saveDetails">Save</button>
@@ -67,20 +67,6 @@
                 </div>
             </div>
         </div>
-            <!-- <ul id="summaryHeadings">
-                <li>Status:</li>
-                <li>Type:</li>
-                <li>Duration:</li>
-                <li>Media ID:</li>
-            </ul>
-            <ul id="summaryDetails">
-                <li>{{ video.status }}</li>
-                <li>{{ video.media_type }}</li>
-                <li>{{ video.duration }}</li>
-                <li>{{ video.key }}</li>
-            </ul> -->
-
-
     </div>
 
 
@@ -103,4 +89,31 @@
 
 </form>
 </div>
+
+
+<div id="showEmbed" hidden>
+    <div id="embedDetails" class="container">
+        <div id="embedHeader" class="row">
+        <h3 class="col-md-12">GENERATE EMBED CODE</h3>
+        </div>
+        <div id="embedCode" class="row">
+            <pre>&lt;script
+            src='{{ embed }}'&gt;
+        &lt;/script&gt;</pre>
+        </div>
+        <button id="embedClose" onclick="document.getElementById('showEmbed').hidden=true;">Close</button>
+
+
+
+    </div>
+    <div id="embedScreen" onclick="document.getElementById('showEmbed').hidden=true;">
+    </div>
+</div>
+
+
+
+
+
+
+
 {% endblock %}

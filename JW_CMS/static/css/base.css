@@ -135,4 +135,82 @@ textarea{
     font-size: 1.3em;
 }
 
+#embedButton{
+    margin-left:1%;
+    color: #ffffff;
+    background-color: blue;
+    border-style: none;
+    cursor: pointer;
+}
+
+#embedButton:hover{
+    background-color: darkblue;
+
+}
+
+#embedScreen{
+    position: absolute;
+    width:100%;
+    height:100%;
+    z-index: 1;
+    background-color: #000000;
+    opacity: .75;
+    left:0;
+    top:0;
+
+}
+
+#embedDetails{
+    width: 50%;
+    background-color: #ffffff;
+    z-index: 2;
+    position: absolute;
+    top:25%;
+    left:25%;
+    padding-bottom: 2%;
+
+}
+
+#embedHeader{
+    border-bottom-style: solid;
+    border-color: #CCCCCC;
+    border-width: 1px;
+    width:90%;
+    margin-left: 5%;
+    margin-top: 2%;
+    text-align: center;
+
+}
+
+#embedCode pre{
+    background-color: #333333;
+    color: white;
+    width: 85%;
+    margin-left: 7.5%;
+    white-space: pre-line;
+    padding: 2%;
+    font-size: 1em;
+}
+
+#embedClose{
+    float: right;
+    margin-right: 5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
