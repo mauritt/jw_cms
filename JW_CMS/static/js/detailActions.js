@@ -28,7 +28,6 @@ function activateSave(){
 }
 
 function deactivateSave(){
-    console.log('hey')
     var saveButton = document.getElementById('saveDetails');
     $(saveButton).removeClass("active");
 
