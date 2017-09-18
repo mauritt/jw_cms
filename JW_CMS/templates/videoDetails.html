@@ -210,6 +210,31 @@
             </div>
         </div>
 
+        <div class="row page" id="sources" hidden>
+            <table class='table'>
+            <tr>
+                <th>Name</th>
+                <th>File Type</th>
+                <th>Dimensions(px)</th>
+                <th>File Size</th>
+                <th>Download</th>
+                <th>Links</th>
+            </tr>
+
+                {% for conversion in conversions %}
+            </tr>
+                <td>{{ conversion.template.name }}</td>
+                <td>{{ conversion.template.format.key }}</td>
+                <td>{{ conversion.height }}x{{ conversion.width }}</td>
+                <td>{{ conversion.filesize }}</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+                {% endfor%}
+            </table>
+
+        </div>
+
 
     </form>
 </div>
