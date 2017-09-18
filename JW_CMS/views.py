@@ -30,11 +30,16 @@ def videoList(request, column=None, order=None, searchTerm=None):
 
 def videoDetails(request, videoKey):
     context = {}
+
     video = jwAccount.get_video(videoKey)
     context['video'] = video
+
     embed = 'http://content.jwplatform.com/players/{}-pu8YCHH3.js'
     embed = embed.format(video.key)
     context['embed'] = embed
+
+    conversions = jwAccount.get_conversions(videoKey)
+    context['conversions'] = conversions
 
     return render(request, 'videoDetails.html', context)
 
@@ -51,6 +56,11 @@ def updateDetails(request, videoKey):
         for x in q.keys():
             params[x] = q[x]
 
-        jwAccount.videos.update(video_key=videoKey, **params)
+        resp = jwAccount.videos.update(video_key=videoKey, **params)
 
-        return HttpResponse('success')
+        if resp['status'] == 'ok':
+            print('success')
+            return HttpResponse('success')
+        else:
+            print('fail')
+            return HttpResponse('fail')
