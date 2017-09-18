@@ -1,236 +1,218 @@
 {% extends 'base.html' %}
 {% block body %}
 <div class="container">
-    <div class="row">
+    <div class="row" id="pageHeader">
         <div class="col-med-12">
             <h1>Video Detail</h1>
         </div>
     </div>
 
-<form
-    id = 'detailsForm'
-    name='{{ video.key }}'
-    method="POST"
-    action=""
-    target = submission.frame
-    onsubmit="deactivateSave()"
-    >
+    <form id = 'detailsForm' name='{{ video.key }}' method="POST" action="" target = submission.frame onsubmit="deactivateSave()">
     {% csrf_token %}
 
-
-    <div class="row" id="formHeader">
-        <div class="col-md-3" id="titleField">
-            <input
-                    id="{{ video.title }}"
-                    class= "editable"
-                    type="text"
-                    name="title"
-                    value = "{{ video.title }}"
-                    onfocusout="activateSave()"
-                    >
-            <i class="material-icons">mode_edit</i>
-        </div>
-        <div class="col-md-9">
-            <button id="embedButton" type="button" onclick="document.getElementById('showEmbed').hidden=false;">Embed</button>
-            <div id="saveButtons">
-                <a href=".."><button type="button">Close</button></a>
-                <button type="submit" id="saveDetails">Save</button>
+        <div class="row" id="formHeader">
+            <div class="col-md-3" id="titleField">
+                <input id="{{ video.title }}" class= "editable" type="text" name="title" value = "{{ video.title }}" onfocusout="activateSave()">
+                <i class="material-icons">mode_edit</i>
             </div>
-        </div>
-    </div>
-        <iframe name="submission.frame" hidden></iframe>
-
-
-
-    <div class="row">
-        <div id="videoEmbed" class="col-md-6 col-md-offset-1">
-            <script src="{{ embed }}"></script>
-        </div>
-
-        <div id="videoSummary" class="col-md-6">
-            <h2>Video Summary</h2>
-            <div class="container">
-                <div class="row">
-                    <label class="col-md-3">Status:</label>
-                    <p class="{{ video.status }}" id="videoStatus">{{ video.status }}</p>
-                </div>
-                <div class="row">
-                    <label class="col-md-3">Type:</label>
-                    <p>{{ video.media_type }}</p>
-                </div>
-                <div class="row">
-                    <label class="col-md-3">Duration:</label>
-                    <p>{{ video.duration_as_time }}</p>
-                </div>
-                <div class="row">
-                    <label class="col-md-3">Media ID:</label>
-                    <input
-                        type="text"
-                        onClick="this.select();"
-                        value="{{ video.key }}"
-                        readonly="readonly"
-                        size="8";
-                        >
+            <div class="col-md-9" id="primaryButtons">
+                <button id="embedButton" type="button" onclick="document.getElementById('showEmbed').hidden=false;">Embed</button>
+                <div id="saveButtons">
+                    <a href=".."><button type="button">Close</button></a>
+                    <button type="submit" id="saveDetails">Save</button>
                 </div>
             </div>
         </div>
-    </div>
 
-<div class="row">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">METADATA</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">TAGS</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">TRACKS</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">SOURCES</a>
-      </li>
-    </ul>
-</div>
-
-<div class="row">
-    <div class="col-md-6">
-        <div class="container">
-            <div class="row">
-                <div id="thumbnail" class="col-md-4" >
-                    <h6>Poster Image Ready</h6>
-                    <img src="{{ video.thumbnails.720 }}" width="100%"/>
-                </div>
-
-
+        <div class="row" id="primaryInfo">
+            <div id="videoEmbed" class="col-md-6 col-md-offset-1">
+                <script src="{{ embed }}"></script>
             </div>
 
-            <div class="row">
-                <div class = "col-md-10">
-                    <h6>Description</h6>
-                    <textarea
-                        name="description"
-                        id = '{{ video.description }}'
+            <div id="videoSummary" class="col-md-6">
+                <h2>Video Summary</h2>
+                <div id="summaryItems" class="container">
+                    <div class="row">
+                        <label class="col-md-3">Status:</label>
+                        <p class="{{ video.status }}" id="videoStatus">{{ video.status }}</p>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3">Type:</label>
+                        <p>{{ video.media_type }}</p>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3">Duration:</label>
+                        <p>{{ video.duration_as_time }}</p>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3">Media ID:</label>
+                        <input type="text" onClick="this.select();" value="{{ video.key }}" readonly="readonly" size="8";>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row" id="tabNavigation">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" onclick="activateTab(this);return false;" href="#">METADATA</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="activateTab(this); return false;" href="#">TAGS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="activateTab(this); return false;" href="#">TRACKS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="activateTab(this); return false;" href="#">SOURCES</a>
+              </li>
+            </ul>
+        </div>
+
+        <div class="row page" id="metadata">
+            <div class="col-md-6" id="metadataLeft">
+                <div class="container" >
+                    <div class="row" id="posterImage">
+                        <div id="thumbnail" class="col-md-4" >
+                            <h6>Poster Image Ready</h6>
+                            <img src="{{ video.thumbnails.720 }}" width="100%"/>
+                        </div>
+                    </div>
+                    <div class="row" id="description">
+                        <div class = "col-md-10">
+                            <h6>Description</h6>
+                            <textarea
+                                name="description"
+                                id = '{{ video.description }}'
+                                class= "editable"
+                                form="detailsForm"
+                                rows="5"
+                                cols="40"
+                                onfocusout="activateSave()"
+                                >{{ video.description }}</textarea>
+                        </div>
+                    </div>
+                    <div class="row" id="permalink">
+                        <div class="col-md-6">
+                            <h6>Video Page Permalink</h6>
+                            <input
+                            size="41"
+                            id=""
+                            class= "editable"
+                            type="text"
+                            name="permalink"
+                            value = ""
+                            onfocusout="activateSave()"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6" id="metadataRight">
+                <div class="container">
+                    <div class="row" id="publishStart">
+                        <div class="col-md-6">
+                            <h6>Publish Start Date</h6>
+                            <input
+                            id=""
+                            class= "editable"
+                            type="text"
+                            name="permalink"
+                            value = ""
+                            onfocusout="activateSave()"
+                            >
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Publish Start Time(UTC)</h6>
+                            <input
+                            id=""
+                            class= "editable"
+                            type="text"
+                            name="permalink"
+                            value = ""
+                            onfocusout="activateSave()"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="row" id="publishEnd">
+                        <div class="col-md-6">
+                            <h6>End Date</h6>
+                            <input
+                            id=""
+                            class= "editable"
+                            type="text"
+                            name="permalink"
+                            value = ""
+                            onfocusout="activateSave()"
+                            >
+                        </div>
+                        <div class="col-md-6">
+                            <h6>End Time (UTC)</h6>
+                            <input
+                            id=""
+                            class= "editable"
+                            type="text"
+                            name="permalink"
+                            value = ""
+                            onfocusout="activateSave()"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="row" id="customParams">
+                        <div class="col-md-6">
+                            <h6>Name</h6>
+                            <input
+                            id=""
+                            class= "editable"
+                            type="text"
+                            name="permalink"
+                            value = ""
+                            onfocusout="activateSave()"
+                            >
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Value</h6>
+                            <input
+                            id=""
+                            class= "editable"
+                            type="text"
+                            name="permalink"
+                            value = ""
+                            onfocusout="activateSave()"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row page" id="tags" hidden>
+            <div class="col-md-6" id="addTags">
+                <h6>Add a tag</h6>
+                <input
+                        id=""
                         class= "editable"
-                        form="detailsForm"
-                        rows="5"
-                        cols="40"
+                        type="text"
+                        name="tag"
+                        value = ""
                         onfocusout="activateSave()"
-                        >{{ video.description }}</textarea>
-                </div>
+                        >
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <h6>Video Page Permalink</h6>
-                    <input
-                    size="41"
-                    id=""
-                    class= "editable"
-                    type="text"
-                    name="permalink"
-                    value = ""
-                    onfocusout="activateSave()"
-                    >
-                </div>
+            <div class="col-md-6" id="currentTags">
+                <h6>Current Tags</h6>
+                {% for tag in video.tags %}
+                <p>{{ tag }}</p>
+                {% endfor %}
             </div>
-
         </div>
-    </div>
 
 
-    <div class="col-md-6">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h6>Publish Start Date</h6>
-                    <input
-                    id=""
-                    class= "editable"
-                    type="text"
-                    name="permalink"
-                    value = ""
-                    onfocusout="activateSave()"
-                    >
-                </div>
-                <div class="col-md-6">
-                    <h6>Publish Start Time(UTC)</h6>
-                    <input
-                    id=""
-                    class= "editable"
-                    type="text"
-                    name="permalink"
-                    value = ""
-                    onfocusout="activateSave()"
-                    >
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <h6>End Date</h6>
-                    <input
-                    id=""
-                    class= "editable"
-                    type="text"
-                    name="permalink"
-                    value = ""
-                    onfocusout="activateSave()"
-                    >
-                </div>
-                <div class="col-md-6">
-                    <h6>End Time (UTC)</h6>
-                    <input
-                    id=""
-                    class= "editable"
-                    type="text"
-                    name="permalink"
-                    value = ""
-                    onfocusout="activateSave()"
-                    >
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <h6>Name</h6>
-                    <input
-                    id=""
-                    class= "editable"
-                    type="text"
-                    name="permalink"
-                    value = ""
-                    onfocusout="activateSave()"
-                    >
-                </div>
-                <div class="col-md-6">
-                    <h6>Value</h6>
-                    <input
-                    id=""
-                    class= "editable"
-                    type="text"
-                    name="permalink"
-                    value = ""
-                    onfocusout="activateSave()"
-                    >
-                </div>
-
-
-
-            </div>
-
-
-    </div>
-
+    </form>
 </div>
-
-
-
-
-
-</form>
-</div>
-
-
 
 <div id="showEmbed" hidden>
     <div id="embedDetails" class="container">
@@ -250,19 +232,7 @@
     <div id="embedScreen" onclick="document.getElementById('showEmbed').hidden=true;">
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+<iframe name="submission.frame" hidden></iframe>
 {% endblock %}
 
 

@@ -34,3 +34,29 @@ function deactivateSave(){
     var form = document.getElementById('detailsForm');
     form.action = ""
 }
+
+
+function activateTab(obj){
+    if(obj.classList.contains('active')){
+        return;
+    }else{
+        var tabs = document.getElementsByClassName('nav-link active');
+        for (var i = 0; i < tabs.length; i++) {
+            $(tabs[i]).removeClass("active");
+        }
+        $(obj).addClass("active");
+
+        var hiddenPages = document.getElementsByClassName('row page');
+        for (var i = 0; i < hiddenPages.length; i++) {
+            var hiddenPage = hiddenPages[i]
+
+            if(hiddenPage.id == obj.innerHTML.toLowerCase()){
+                hiddenPage.hidden=false;
+            }else{
+                hiddenPage.hidden=true;
+            }
+        }
+
+    }
+
+}
