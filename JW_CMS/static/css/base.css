@@ -115,18 +115,18 @@ header{
 
 
 #saveDetails.active{
-    background-color: green;
+    background-color: blue;
     color: white;
     cursor: pointer;
 
 }
 
 
-#saveDetails.active:active{
+/*#saveDetails.active:active{
     background-color: white;
     color: green;
 
-}
+}*/
 
 .row{
     margin-bottom: 2%;

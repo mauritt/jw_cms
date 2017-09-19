@@ -33,6 +33,7 @@ function deactivateSave(){
 
     var form = document.getElementById('detailsForm');
     form.action = ""
+
 }
 
 

@@ -7,7 +7,13 @@
         </div>
     </div>
 
-    <form id = 'detailsForm' name='{{ video.key }}' method="POST" action="" target = submission.frame onsubmit="deactivateSave()">
+    <form
+        id = 'detailsForm'
+        name='{{ video.key }}'
+        method="POST"
+        action=""
+        target = "submission.frame"
+        >
     {% csrf_token %}
 
         <div class="row" id="formHeader">
@@ -282,7 +288,7 @@
     <div id="embedScreen" onclick="document.getElementById('showEmbed').hidden=true;">
     </div>
 </div>
-<iframe name="submission.frame" hidden></iframe>
+<iframe name="submission.frame" onload="deactivateSave()" hidden></iframe>
 {% endblock %}
 
 
