@@ -67,3 +67,10 @@ def updateDetails(request, videoKey):
         else:
             print('fail')
             return HttpResponse('fail')
+
+def deleteVideo(request, videoKey):
+    resp = jwAccount.videos.delete(video_key=videoKey)
+    return HttpResponse('ok')
+
+
+

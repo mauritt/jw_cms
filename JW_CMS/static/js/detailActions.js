@@ -60,3 +60,23 @@ function activateTab(obj){
     }
 
 }
+
+function deleteVideo(videoKey){
+    var confirmation = confirm('Are you sure you want to delete this video?')
+
+    if(confirmation){
+        $.ajax({url:"../delete/" + videoKey, success: function(){
+            window.location = "../";
+            }
+        });
+    }else{
+        return
+    };
+};
+
+
+
+
+
+
+
