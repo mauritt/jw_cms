@@ -41,6 +41,9 @@ def videoDetails(request, videoKey):
     conversions = jwAccount.get_conversions(videoKey)
     context['conversions'] = conversions
 
+    tracks = jwAccount.get_tracks(videoKey)
+    context['tracks'] = tracks
+
     return render(request, 'videoDetails.html', context)
 
 

@@ -234,6 +234,28 @@
             </table>
 
         </div>
+        <div class="row page" id="tracks" hidden>
+            <table class='table'>
+            <tr>
+                <th>Name</th>
+                <th>Kind</th>
+                <th>Format</th>
+                <th>Status</th>
+                <th>Links</th>
+            </tr>
+
+                {% for track in tracks %}
+            </tr>
+                <td>{{ track.label }}</td>
+                <td>{{ track.kind }}</td>
+                <td>{{ track.format }}</td>
+                <td>{{ track.status }}</td>
+                <td>-</td>
+            </tr>
+                {% endfor%}
+            </table>
+
+        </div>
 
 
     </form>
