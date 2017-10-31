@@ -11,13 +11,13 @@ function applySearch(){
         URL = 'search/' + searchTerm + " #videoTable";
         $(videoList).load(URL, function(){
             searchSubmit.value = 'clear';
-            searchLabel.innerHTML = 'clear'
+            searchLabel.innerHTML = 'clear';
         });
     }else{
         URL = '.' + ' #videoTable';
         $(videoList).load(URL, function(){
             searchSubmit.value = 'search';
-            searchLabel.innerHTML = 'search'
+            searchLabel.innerHTML = 'search';
             document.forms['searchForm']['searchField'].value = 'SEARCH';
             searchField.style.color = 'grey';
         });

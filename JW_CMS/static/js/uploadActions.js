@@ -9,26 +9,8 @@ function getUploadURL(obj){
         label.innerHTML = "UPLOAD";
         label.setAttribute("for", "uploadFile");
     });
-
-};
+}
 
 function uploadSuccess(){
     alert("Your video was uploaded");
-
-
 }
-
-
-
-
-// <input class="uploadInput" id="uploadFile" type="submit">
-// <label for="uploadFile" class="inactive" id="uploadLabel">Upload</label>
-
-
-
-
-
-
-
-        // var uploadButton = document.getElementById('uploadLabel');
-        // uploadButton.className = 'active';

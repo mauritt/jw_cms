@@ -19,12 +19,8 @@ function activateSave(){
 
     }else{
         $(saveButton).removeClass("active");
-        form.action = ""
+        form.action = "";
     }
-
-
-
-
 }
 
 function deactivateSave(){
@@ -32,7 +28,7 @@ function deactivateSave(){
     $(saveButton).removeClass("active");
 
     var form = document.getElementById('detailsForm');
-    form.action = ""
+    form.action = "";
 
 }
 
@@ -42,14 +38,16 @@ function activateTab(obj){
         return;
     }else{
         var tabs = document.getElementsByClassName('nav-link active');
-        for (var i = 0; i < tabs.length; i++) {
+        for (var i = 0; i < tabs.length; i++){
             $(tabs[i]).removeClass("active");
         }
+
         $(obj).addClass("active");
 
         var hiddenPages = document.getElementsByClassName('row page');
-        for (var i = 0; i < hiddenPages.length; i++) {
-            var hiddenPage = hiddenPages[i]
+
+        for (var i = 0; i < hiddenPages.length; i++){
+            var hiddenPage = hiddenPages[i];
 
             if(hiddenPage.id == obj.innerHTML.toLowerCase()){
                 hiddenPage.hidden=false;
@@ -57,9 +55,7 @@ function activateTab(obj){
                 hiddenPage.hidden=true;
             }
         }
-
     }
-
 }
 
 function deleteVideo(videoKey){
@@ -71,13 +67,6 @@ function deleteVideo(videoKey){
             }
         });
     }else{
-        return
-    };
-};
-
-
-
-
-
-
-
+        return;
+    }
+}
